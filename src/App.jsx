@@ -9,7 +9,7 @@ import Contact from "./components/Contact"
 function App() {
 
   return (
-    <>
+    <div className="bg-white dark:bg-zinc-950 text-black dark:text-white min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -17,7 +17,7 @@ function App() {
       <Projects />
       <Skills />
       <Contact />
-    </>
+    </div>
   )
 }
 

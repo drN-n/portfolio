@@ -50,7 +50,7 @@ const skillCategories = [
 
 function Skills() {
     return (
-        <section className="max-w-2xl mx-auto text-center px-6 py-16">
+        <section id="skills" className="max-w-2xl mx-auto text-center px-6 py-16">
             <p className="text-sm font-mono uppercase tracking-wide text-accent">// 05 — Skills</p>
             <h2 className="text-3xl font-medium mt-4 mb-10">What I work with</h2>
 

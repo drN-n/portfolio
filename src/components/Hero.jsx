@@ -1,6 +1,6 @@
 function Hero() {
     return (
-        <section className="max-w-2xl mx-auto text-center px-6 py-24">
+        <section id="hero" className="max-w-2xl mx-auto text-center px-6 py-24">
             <p className="text-sm font-mono uppercase tracking-wide text-accent">// 01 — Introduction</p>
             <h1 className="text-5xl md:text-6xl font-medium tracking-tight text-black mt-6 mb-4">Aldrin R. Mangubat</h1>
             <p>Recent IT graduate learning by building - React, Next.js, and clean, responsive interfaces.</p>

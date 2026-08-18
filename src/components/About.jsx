@@ -18,7 +18,7 @@ const timeline = [
 
 function About() {
     return (
-        <section className="max-w-2xl mx-auto text-center px-6 py-16">
+        <section id="about" className="max-w-2xl mx-auto text-center px-6 py-16">
             <p className="text-sm font-mono uppercase tracking-wide text-accent">// 02 — About</p>
 
             <h2 className="text-3xl font-medium mt-4 mb-6">What I'm about</h2>

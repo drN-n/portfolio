@@ -3,10 +3,15 @@
 
 @theme {
   --color-accent: var(--color-violet-600);
+  --color-fg: #0a0a0a;
+  --color-fg-muted: #6b7280;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-accent: var(--color-violet-400);
-  }
+.dark {
+  --color-fg: #ffffff;
+  --color-fg-muted: #a1a1aa;
+  --color-surface: #09090b;
+  --color-border: #27272a;
 }

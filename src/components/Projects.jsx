@@ -8,7 +8,7 @@ const projects = [
         live: "https://ancestree2025.netlify.app/",
         },
         {
-        title: "Desk-o'clock",
+        title: "Desk O'clock",
         description: "A lightweight, distraction-free clock for a browser tab or second monitor. Built with plain HTML, CSS, and JavaScript. It's still a work in progress, with a few more features on the way.",
         tags: ["HTML", "CSS", "JavaScript"],
         status: "In progress",
@@ -19,31 +19,38 @@ const projects = [
 
 function Projects() {
     return (
-        <section id="projects" className="max-w-2xl mx-auto text-center px-6 py-16">
-            <p className="text-sm font-mono uppercase tracking-wide text-accent">// 04 — Projects</p>
-            <h2 className="text-3xl font-medium mt-4 mb-10">Things I've built</h2>
+        <section id="projects" className="max-w-4xl mx-auto px-4 py-20">
+            <h2 className="text-3xl font-bold text-fg mb-10">Things I've built</h2>
 
-            <div className="text-left space-y-6">
+            <div className="space-y-6">
                 {projects.map((project) => (
-                    <div key={project.title} className="border border-gray-200 rounded-lg p-6">
-                        <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-lg font-semibold text-black">{project.title}</h3>
-                            <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent">{project.status}</span>
+                    <div key={project.title} className="bg-surface border border-border rounded-lg p-6 grid grid-cols-1 sm:grid-cols-[1fr_1.4fr] gap-6">
+                        <div>
+                            <p className="text-base font-semibold text-fg mb-2">{project.title}</p>
+                            <span className="inline-block text-xs px-2.5 py-1 rounded-full bg-accent/15 text-accent mb-3">{project.status}</span>
+
+                            <div className="flex flex-wrap gap-1.5">
+                                {project.tags.map((tag) => (
+                                    <span key={tag} className="text-xs px-2 py-1 rounded bg-border/40 text-fg-muted">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
 
-                        <p className="text-sm text-gray-600 leading-relaxed mb-4">{project.description}</p>
+                        <div className="sm:border-l sm:border-border sm:pl-6">
+                            <p className="text-sm text-fg-muted leading-relaxed mb-3">{project.description}</p>
 
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {project.tags.map((tag) => (
-                                <span key={tag} className="text-xs px-2 py-1 rounded bg-gray-100 text-gray-600">{tag}</span>
-                            ))}
-                        </div>
-
-                        <div className="flex gap-4 text-sm">
-                            <a href={project.github} className="text-gray-700 underline">GitHub</a>
-                            {project.live && (
-                                <a href={project.live} className="text-accent underline">Live demo</a>
-                            )}
+                            <div className="flex gap-4 text-sm">
+                                <a href={project.github} className="text-fg-muted underline hover:text-accent">
+                                    GitHub
+                                </a>
+                                {project.live && (
+                                    <a href={project.live} className="text-fg-muted underline hover:text-accent">
+                                        Live demo
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))}

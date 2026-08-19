@@ -1,7 +1,8 @@
 const experiences = [
     {
         company: "Ollopa Corporation",
-        role: "Frontend Developer Intern (OJT) | Co-Team Lead",
+        role: "Frontend Developer Intern",
+        subRole: "Co-Team Lead",
         duration: "Feb - May 2026",
         bullets: [
             "Served as Co-Team Lead, coordinating a team of interns by managing daily task assignments, tracking progress, and handling most of the team's day-to-day coordination.",
@@ -13,27 +14,26 @@ const experiences = [
 
 function Work() {
     return (
-        <section id="work" className="max-w-2xl mx-auto text-center px-6 py-16">
-            <p className="text-sm font-mono uppercase tracking-wide text-accent">// 03 — Work</p>
-            <h2 className="text-3xl font-medium mt-4 mb-10">Experience</h2>
+        <section id="work" className="max-w-4xl mx-auto px-4 py-20">
+            <h2 className="text-3xl font-bold text-fg mb-10">Experience</h2>
 
-            <div className="text-left space-y-6">
+            <div className="space-y-6">
                 {experiences.map((exp) => (
-                    <div key={exp.company} className="border border-gray-200 rounded-lg p-6">
-                        <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-lg font-semibold text-black">{exp.role}</h3>
-                            <span className="text-xs text-gray-400 shrink-0 ml-4">{exp.duration}</span>
+                    <div key={exp.company} className="bg-surface border border-border rounded-lg p-6 grid grid-cols-1 sm:grid-cols-[1fr_1.4fr] gap-6">
+                        <div>
+                            <p className="text-sm font-semibold text-fg mb-1">{exp.role}</p>
+                            <p className="text-xs uppercase tracking-wide text-accent mb-2">{exp.subRole}</p>
+                            <p className="text-sm text-fg-muted mb-0.5">{exp.company}</p>
+                            <p className="text-sm text-fg-muted/70">{exp.duration}</p>
                         </div>
 
-                        <p className="text-sm text-gray-500 mb-4">{exp.company}</p>
-
-                        <ul className="space-y-2 list-disc list-inside">
+                        <div className="sm:border-l sm:border-border sm:pl-6 flex flex-col gap-2">
                             {exp.bullets.map((bullet) => (
-                                <li key={bullet} className="text-sm text-gray-600 leading-relaxed">
+                                <p key={bullet} className="text-sm text-fg-muted leading-relaxed">
                                     {bullet}
-                                </li>
+                                </p>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 ))}
             </div>

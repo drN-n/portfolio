@@ -18,23 +18,24 @@ const timeline = [
 
 function About() {
     return (
-        <section id="about" className="max-w-2xl mx-auto text-center px-6 py-16">
-            <p className="text-sm font-mono uppercase tracking-wide text-accent">// 02 — About</p>
+        <section id="about" className="max-w-4xl mx-auto px-4 py-20">
+            <h2 className="text-3xl font-medium text-fg mb-6">What I'm about</h2>
 
-            <h2 className="text-3xl font-medium mt-4 mb-6">What I'm about</h2>
-            <p className="max-w-xl mx-auto text-gray-600 text-sm leading-relaxed mb-16">
-                I like working across the whole process, from a rough layout to a working, polished interface. My internship and capstone project gave me hands-on experience translating designs into responsive, functional code. I'm looking for an entry-level role where I can keep learning while contributing real, useful work.
-            </p>
+            <div className="border-l-2 border-accent pl-4 mb-12">
+                <p className="text-sm text-fg-muted leading-relaxed max-w-2xl">
+                    I like working across the whole process, from a rough layout to a working, polished interface. My internship and capstone project gave me hands-on experience translating designs into responsive, functional code. I'm looking for an entry-level role where I can keep learning while contributing real, useful work.
+                </p>
+            </div>
 
-            <h3 className="text-sm font-mono uppercase tracking-wide text-gray-400 mb-8">Timeline</h3>
+            <p className="text-xs uppercase tracking-widest text-fg-muted mb-4">Timeline</p>
 
-            <div className="max-w-md mx-auto text-left space-y-6">
+            <div className="space-y-4">
                 {timeline.map((item) => (
-                    <div key={item.title} className="flex gap-4">
-                        <p className="w-28 shrink-0 text-sm text-gray-400">{item.year}</p>
-                        <div>
-                            <p className="text-sm font-medium">{item.title}</p>
-                            <p className="text-sm text-gray-500">{item.detail}</p>
+                    <div key={item.title} className="bg-surface border border-border rounded-lg p-5 grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-4">
+                        <p className="text-sm text-fg-muted">{item.year}</p>
+                        <div className="sm:border-l sm:border-border sm:pl-6">
+                            <p className="text-sm font-semibold text-fg mb-1">{item.title}</p>
+                            <p className="text-sm text-fg-muted/70">{item.detail}</p>
                         </div>
                     </div>
                 ))}

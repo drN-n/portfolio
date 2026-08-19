@@ -26,7 +26,9 @@ function Hero() {
                             View Work
                         </a>
                         <a
-                            href="#"
+                            href="/public/mangubat_resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="border border-border text-fg px-5 py-2.5 rounded-lg text-sm font-medium">
                             Resume
                         </a>

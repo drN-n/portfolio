@@ -49,15 +49,18 @@ function Navbar() {
     }
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-950">
-            <p className="text-sm font-bold text-black dark:text-white">AM</p>
+        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-bg">
+            <div className="flex items-baseline gap-2">
+                <p className="font-mono text-sm font-bold text-accent">{"{ AM }"}</p>
+                <p className="hidden sm:inline text-sm font-semibold text-fg">Aldrin Mangubat</p>
+            </div>
 
             <div className="flex items-center gap-6">
                 {navLinks.map(({ id, label }) => (
                     <a
                         key={id}
                         href={`#${id}`}
-                        className={`text-xs pb-1 border-b-2 transition-colors ${activeSection === id ? "text-black dark:text-white border-accent" : "text-gray-500 dark:text-gray-400 border-transparent"}`}
+                        className={`text-xs pb-1 border-b-2 transition-colors ${activeSection === id ? "text-fg border-accent" : "text-fg-muted border-transparent"}`}
                     >
                         {label}
                     </a>
@@ -65,13 +68,13 @@ function Navbar() {
 
                 <button
                     onClick={toggleTheme}
-                    className="w-11 h-6 rounded-full bg-gray-200 dark:bg-zinc-700 relative transition-colors"
+                    className="w-11 h-6 rounded-full bg-border relative transition-colors"
                 >
                     <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-accent flex items-center justify-center transition-transform ${isDark ? "translate-x-5" : "translate-x-0.5"}`} >
                     {isDark ? (
-                        <FiMoon size={11} className="text-black dark:text-white" />
+                        <FiMoon size={11} className="text-white" />
                     ) : (
-                        <FiSun size={11} className="text-black dark:text-white" />
+                        <FiSun size={11} className="text-white" />
                     )}
                     </span>
                 </button>

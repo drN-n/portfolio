@@ -3,6 +3,7 @@
 
 @theme {
   --color-accent: var(--color-violet-600);
+  --color-bg: #ffffff;
   --color-fg: #0a0a0a;
   --color-fg-muted: #6b7280;
   --color-surface: #ffffff;
@@ -10,6 +11,7 @@
 }
 
 .dark {
+  --color-bg: #0a0a0a;
   --color-fg: #ffffff;
   --color-fg-muted: #a1a1aa;
   --color-surface: #18181b;

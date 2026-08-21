@@ -51,8 +51,11 @@ function Navbar() {
 
     useEffect(() => {
         function handleScroll() {
-            const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 10
-            if (scrolledToBottom) {
+            const contactEl = document.getElementById("contact")
+            if (!contactEl) return
+
+            const rect = contactEl.getBoundingClientRect()
+            if (rect.bottom <= window.innerHeight + 5) {
                 setActiveSection("contact")
             }
         }

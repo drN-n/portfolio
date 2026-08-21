@@ -68,6 +68,7 @@ function Navbar() {
 
                 <button
                     onClick={toggleTheme}
+                    aria-label="Toggle dark mode theme"
                     className="w-11 h-6 rounded-full bg-border relative transition-colors"
                 >
                     <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-accent flex items-center justify-center transition-transform ${isDark ? "translate-x-5" : "translate-x-0.5"}`} >

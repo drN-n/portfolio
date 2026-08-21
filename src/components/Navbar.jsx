@@ -27,20 +27,29 @@ function Navbar() {
     }, [isDark])
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id)
+        function handleScroll() {
+            const scrollPosition = window.scrollY + 150
+            let current = "hero"
+
+            observedSections.forEach((id) => {
+                const section = document.getElementById(id)
+                if (section && section.offsetTop <= scrollPosition) {
+                    current = id
                 }
             })
-        }, { rootMargin: "0px 0px -50% 0px" })
+            
+            const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5
 
-        observedSections.forEach((id) => {
-            const section = document.getElementById(id)
-            if (section) observer.observe(section)
-        })
+            if (scrolledToBottom) {
+                current = "contact"
+            }
 
-        return () => observer.disconnect()
+            setActiveSection(current)
+        }
+
+        handleScroll()
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
     function toggleTheme() {
@@ -48,21 +57,6 @@ function Navbar() {
         setIsDark(newIsDark)
         localStorage.setItem("theme", newIsDark ? "dark" : "light")
     }
-
-    useEffect(() => {
-        function handleScroll() {
-            const contactEl = document.getElementById("contact")
-            if (!contactEl) return
-
-            const rect = contactEl.getBoundingClientRect()
-            if (rect.bottom <= window.innerHeight + 5) {
-                setActiveSection("contact")
-            }
-        }
-
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
 
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-bg">

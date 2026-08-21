@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { FiSun, FiMoon } from "react-icons/fi"
+import { scrollToSection } from "../utils/scrollToSection"
 
 const navLinks = [
     { id: "about", label: "About" },
@@ -48,6 +49,18 @@ function Navbar() {
         localStorage.setItem("theme", newIsDark ? "dark" : "light")
     }
 
+    useEffect(() => {
+        function handleScroll() {
+            const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 10
+            if (scrolledToBottom) {
+                setActiveSection("contact")
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-bg">
             <div className="flex items-baseline gap-2">
@@ -60,6 +73,10 @@ function Navbar() {
                     <a
                         key={id}
                         href={`#${id}`}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            scrollToSection(id)
+                        }}
                         className={`text-xs pb-1 border-b-2 transition-colors ${activeSection === id ? "text-fg border-accent" : "text-fg-muted border-transparent"}`}
                     >
                         {label}

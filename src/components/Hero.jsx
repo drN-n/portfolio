@@ -1,3 +1,5 @@
+import { scrollToSection } from "../utils/scrollToSection"
+
 function Hero() {
     return (
         <section id="hero" className="max-w-4xl mx-auto px-4 py-20">
@@ -22,11 +24,15 @@ function Hero() {
                     <div className="flex gap-3">
                         <a
                             href="#work"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                scrollToSection("work")
+                            }}
                             className="bg-accent text-white px-5 py-2.5 rounded-lg text-sm font-medium">
                             View Work
                         </a>
                         <a
-                            href="/public/mangubat_resume.pdf"
+                            href="/mangubat_resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="border border-border text-fg px-5 py-2.5 rounded-lg text-sm font-medium">

@@ -15,7 +15,6 @@ const timeline = [
         detail: "Cebu Institute of Technology - Graduated",
     },
 ]
-
 function About() {
     return (
         <section id="about" className="max-w-4xl mx-auto px-4 py-20">

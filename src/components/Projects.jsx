@@ -14,6 +14,15 @@ const projects = [
         status: "In progress",
         github: "https://github.com/drN-n/desk-o-clock",
         live: null,
+        },
+        {
+        title: "Job Application Tracker",
+        description:
+            "A job application tracker to help organize and monitor job search progress. Built with a Java/Spring Boot backend and a React + TypeScript frontend. Still early in development, with more features planned.",
+        tags: ["Java", "Spring Boot", "React", "TypeScript"],
+        status: "In progress",
+        github: "https://github.com/drN-n/job-application-tracker",
+        live: null,
     },
 ]
 

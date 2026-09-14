@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { FiSun, FiMoon } from "react-icons/fi"
 import { scrollToSection } from "../utils/scrollToSection"
+import { useActiveSection } from "../hooks/useActiveSection"
 
 const navLinks = [
     { id: "about", label: "About" },
@@ -10,8 +11,6 @@ const navLinks = [
     { id: "contact", label: "Contact" },
 ]
 
-const observedSections = ["hero", ...navLinks.map(link => link.id)]
-
 function Navbar() {
     const [isDark, setIsDark] = useState(() => {
         const saved = localStorage.getItem("theme")
@@ -20,38 +19,12 @@ function Navbar() {
         return saved ? saved === "dark" : systemPrefersDark
     })
 
-    const [activeSection, setActiveSection] = useState("hero")
+    const activeSection = useActiveSection()
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", isDark)
     }, [isDark])
-
-    useEffect(() => {
-        function handleScroll() {
-            const scrollPosition = window.scrollY + 150
-            let current = "hero"
-
-            observedSections.forEach((id) => {
-                const section = document.getElementById(id)
-                if (section && section.offsetTop <= scrollPosition) {
-                    current = id
-                }
-            })
-            
-            const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5
-
-            if (scrolledToBottom) {
-                current = "contact"
-            }
-
-            setActiveSection(current)
-        }
-
-        handleScroll()
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
-
+    
     function toggleTheme() {
         const newIsDark = !isDark
         setIsDark(newIsDark)
@@ -59,13 +32,15 @@ function Navbar() {
     }
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-bg">
-            <div className="flex items-baseline gap-2">
-                <p className="font-mono text-sm font-bold text-accent">{"{ AM }"}</p>
-                <p className="hidden sm:inline text-sm font-semibold text-fg">Aldrin Mangubat</p>
-            </div>
+        <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-bg/95 backdrop-blur-sm font-mono">
+            <button onClick={() => scrollToSection("hero")} className="flex items-baseline gap-2">
+                <span className="text-sm font-bold text-fg">
+                    AM<span className="text-accent">.</span>
+                    <span className="hidden sm:inline text-xs text-fg-muted">Mangubat</span>
+                </span>
+            </button>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-5 sm:gap-7">
                 {navLinks.map(({ id, label }) => (
                     <a
                         key={id}
@@ -74,7 +49,7 @@ function Navbar() {
                             e.preventDefault()
                             scrollToSection(id)
                         }}
-                        className={`text-xs pb-1 border-b-2 transition-colors ${activeSection === id ? "text-fg border-accent" : "text-fg-muted border-transparent"}`}
+                        className={`text-xs pb-1 border-b transition-colors ${activeSection === id ? "text-fg border-accent" : "text-fg-muted border-transparent hover:text-fg"}`}
                     >
                         {label}
                     </a>
@@ -83,14 +58,16 @@ function Navbar() {
                 <button
                     onClick={toggleTheme}
                     aria-label="Toggle dark mode theme"
-                    className="w-11 h-6 rounded-full bg-border relative transition-colors"
+                    className="w-10 h-5 rounded-sm border border-border relative shrink-0"
                 >
-                    <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-accent flex items-center justify-center transition-transform ${isDark ? "translate-x-5" : "translate-x-0.5"}`} >
-                    {isDark ? (
-                        <FiMoon size={11} className="text-white" />
-                    ) : (
-                        <FiSun size={11} className="text-white" />
-                    )}
+                    <span
+                        className={`absolute top-0.5 left-0.5 w-3.5 h-3.5 rounded-sm bg-accent flex items-center justify-center transistion-transofrm ${isDark ? "translate-x-[22px]" : "translate-x-0"}`}
+                    >
+                        {isDark ? (
+                            <FiMoon size={8} className="text-white" />
+                        ) : (
+                            <FiSun size={8} className="text-white" />
+                        )}
                     </span>
                 </button>
             </div>

@@ -2,18 +2,76 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: var(--color-violet-600);
-  --color-bg: #ffffff;
-  --color-fg: #0a0a0a;
-  --color-fg-muted: #6b7280;
-  --color-surface: #ffffff;
-  --color-border: #e5e7eb;
+  --font-sans: "Inter", ui-sans-serif, system-ui, san-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --color-accent: #c1442c;
+  --color-bg: #f7f6f2;
+  --color-fg: #1c232b;
+  --color-fg-muted: #5c6570;
+  --color-surface: #fbfaf7;
+  --color-border: #dad7ce;
 }
 
 .dark {
-  --color-bg: #0a0a0a;
-  --color-fg: #ffffff;
-  --color-fg-muted: #a1a1aa;
-  --color-surface: #18181b;
-  --color-border: #27272a;
+  --color-accent: #e2603f;
+  --color-bg: #12161b;
+  --color-fg: #ece9e2;
+  --color-fg-muted: #8b93a0;
+  --color-surface: #171b21;
+  --color-border: #262c33;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Marquee on Skills section */
+.marquee-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+}
+
+.marquee-track.left {
+  animation-name: marquee-left;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee-track.right {
+  animation-name: marquee-right;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track.left,
+  .marquee-track.right {
+    animation: none;
+  }
 }

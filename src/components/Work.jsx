@@ -14,26 +14,32 @@ const experiences = [
 
 function Work() {
     return (
-        <section id="work" className="max-w-4xl mx-auto px-4 py-20">
-            <h2 className="text-3xl font-bold text-fg mb-10">Experience</h2>
+        <section id="work" className="max-w-4xl mx-auto px-6 py-20 border-t border-border">
+            <div className="flex items-baseline justify-between mb-10">
+                <h2 className="text-2xl sm:text-3xl font-mono font-semibold text-fg">Experience</h2>
+            </div>
 
-            <div className="space-y-6">
+            
+            <div className="space-y-10">
                 {experiences.map((exp) => (
-                    <div key={exp.company} className="bg-surface border border-border rounded-lg p-6 grid grid-cols-1 sm:grid-cols-[1fr_1.4fr] gap-6">
+                    <div key={exp.company} className="grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-4 sm:gap-6">
                         <div>
                             <p className="text-sm font-semibold text-fg mb-1">{exp.role}</p>
-                            <p className="text-xs uppercase tracking-wide text-accent mb-2">{exp.subRole}</p>
+                            <p className="text-xs font-mono text-accent mb-2">{exp.subRole}</p>
                             <p className="text-sm text-fg-muted mb-0.5">{exp.company}</p>
                             <p className="text-sm text-fg-muted/70">{exp.duration}</p>
                         </div>
 
-                        <div className="sm:border-l sm:border-border sm:pl-6 flex flex-col gap-2">
+                        <ul className="space-y-3 sm:border-l sm:border-border sm:pl-6">
                             {exp.bullets.map((bullet) => (
-                                <p key={bullet} className="text-sm text-fg-muted leading-relaxed">
+                                <li
+                                    key={bullet}
+                                    className="text-sm text-fg-muted leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent"
+                                >
                                     {bullet}
-                                </p>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
                 ))}
             </div>

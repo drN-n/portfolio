@@ -52,27 +52,38 @@ const skillCategories = [
 
 function Skills() {
     return (
-        <section id="skills" className="max-w-4xl mx-auto px-4 py-20">
-            <h2 className="text-3xl font-bold text-fg mb-10">What I work with</h2>
+        <section id="skills" className="max-w-4xl mx-auto px-4 py-20 border-t border-border">
 
-            <div className="space-y-10">
-                {skillCategories.map((group) => (
+            <div className="flex items-baseline justify-between mb-10">
+                <h2 className="text-2xl sm:text-3xl font-mono font-semibold text-fg">What I work with</h2>
+            </div>
+
+            <div className="space-y-8">
+                {skillCategories.map((group, i) => (
                     <div key={group.category}>
-                        <p className="text-xs uppercase tracking-widest text-fg-muted mb-4">{group.category}</p>
+                        <p className="text-xs font-mono text-fg-muted mb-3">{group.category}</p>
+                        <div className="marquee-row">
+                            <div
+                                className={`marquee-track ${i % 2 === 0 ? "left" : "right"}`}
+                                style={{ animationDuration: `${group.skills.length * 4}s` }}
+                            >
+                                {[...group.skills, ...group.skills].map((skill, idx) => (
+                                    <div
+                                        key={`${skill.name}-${idx}`}
+                                        className="flex items-center gap-2 border border-border rounded-sm px-3 py-2 shrink-0 bg-bg"
+                                    >
+                                        {skill.invert ? (
+                                            <div className="w-4 h-4 rounded-sm bg-white flex items-center justify-center">
+                                                <skill.icons size={12} color={skill.color} />
+                                            </div>
+                                        ) : (
+                                            <skill.icons size={16} color={skill.color} /> 
+                                        )}
 
-                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                            {group.skills.map((skill) => (
-                                <div key={skill.name} className="bg-surface border border-border rounded-lg p-4 flex flex-col items-center justify-center gap-2">
-                                    {skill.invert ? (
-                                        <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center">
-                                            <skill.icons size={24} color={skill.color} />
-                                        </div>
-                                    ) : (
-                                        <skill.icons size={28} color={skill.color} />
-                                    )}
-                                    <p className="text-xs text-fg-muted text-center">{skill.name}</p>
-                                </div>
-                            ))}
+                                        <p className="text-xs font-mono text-fg-muted whitespace-nowrap">{skill.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 ))}

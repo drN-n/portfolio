@@ -26,7 +26,7 @@ function Hero() {
                 <div className="space-y-1.5 font-mono text-sm">
                     <div className="flex gap-4">
                         <span className="text-fg-muted w-16 shrink-0">Role</span>
-                        <span className="text-fg">Frontend Developer</span>
+                        <span className="text-fg">Software Developer</span>
                     </div>
                     <div className="flex gap-4">
                         <span className="text-fg-muted w-16 shrink-0">Status</span>

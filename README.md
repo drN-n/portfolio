@@ -2,7 +2,7 @@
 
 My personal portfolio, built to showcase my frontend projects, skills, and experience.
 
-🔗 **Live site:** [to be added]
+🔗 **Live site:** [aldrin-dev.vercel.app]
 
 ## Built with
 

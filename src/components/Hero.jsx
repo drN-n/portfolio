@@ -11,17 +11,6 @@ function Hero() {
                 Aldrin R.<br />Mangubat
             </h1>
 
-            <svg viewBox="0 0 600 20" className="w-full max-w-md h-5 mb-10 text-border" preserveAspectRatio="none">
-                <line x1="0" y1="10" x2="600" y2="10" stroke="currentColor" strokeWidth="1" />
-                {Array.from({ length: 31 }).map((_, i) => (
-                    <line 
-                        key={i}
-                        x1={i * 20} y1={i % 5 === 0 ? 2 : 6} x2={i * 20} y2="10"
-                        stroke="currentColor" strokeWidth="1"
-                    />
-                ))}
-            </svg>
-
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.3fr] gap-10 items-start">
                 <div className="space-y-1.5 font-mono text-sm">
                     <div className="flex gap-4">

@@ -57,7 +57,7 @@ function Hero() {
                             View work
                         </a>
                         <a
-                            href="/mangubat_resume.pdf"
+                            href="/mangubatAldrin-resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="border border-border text-fg px-5 py-2.5 rounded-sm text-sm font-medium font-mono"
